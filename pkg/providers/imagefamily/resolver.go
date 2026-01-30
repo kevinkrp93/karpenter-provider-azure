@@ -86,7 +86,7 @@ type ImageFamily interface {
 		nodeBootstrappingClient types.NodeBootstrappingAPI,
 		fipsMode *v1beta1.FIPSMode,
 		localDNS *v1beta1.LocalDNS,
-		artifactStreamingEnabled *bool,
+		artifactStreaming *v1beta1.ArtifactStreamingMode,
 	) customscriptsbootstrap.Bootstrapper
 	Name() string
 	// DefaultImages returns a list of default CommunityImage definitions for this ImageFamily.
