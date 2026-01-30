@@ -74,6 +74,7 @@ type ImageFamily interface {
 		labels map[string]string,
 		caBundle *string,
 		instanceType *cloudprovider.InstanceType,
+		artifactStreaming *v1beta1.ArtifactStreamingMode,
 	) bootstrap.Bootstrapper
 	CustomScriptsNodeBootstrapping(
 		kubeletConfig *bootstrap.KubeletConfiguration,
@@ -171,6 +172,7 @@ func (r *defaultResolver) Resolve(
 			staticParameters.Labels,
 			staticParameters.CABundle,
 			instanceType,
+			nodeClass.Spec.ArtifactStreaming,
 		),
 		CustomScriptsNodeBootstrapping: imageFamily.CustomScriptsNodeBootstrapping(
 			prepareKubeletConfiguration(ctx, instanceType, nodeClass),
